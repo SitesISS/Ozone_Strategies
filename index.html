@@ -1,0 +1,1251 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Saving the Ozone Layer</title>
+<meta name="description" content="IGCSE Environmental Management 0680: a step-by-step walk-through of strategies to manage ozone depletion, with check questions.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: a guided reading page. Section chips across the top; each section is the notes (with a diagram) followed by a check card that must be passed before moving on. */
+:root {
+  --bg: #eff1ec; --surface: #ffffff; --sunk: #f5f6f2; --ink: #1c2923; --muted: #5a6760; --line: #d4dad2;
+  --strat: #dde9f5; --trop: #eef4fa; --ground: #cfd8c4; --ozone: #8fc1e3; --thin: #e8f1f8; --sun: #f2c14e; --uv: #8a4fbf; --cfc: #d9534f;
+  --accent: #2c6a4c; --accent-ink: #ffffff; --accent-soft: #dfece4;
+  --good: #1f7449; --good-bg: #e2f2e8; --bad: #b1372e; --bad-bg: #fbe8e5; --hint: #8d600c; --hint-bg: #fbf0d9;
+  --enz: #c9dfe4; --enz-line: #1c6676; --sub: #5aa469; --sub-end: #2c6a3a; --inh: #d9534f; --comp: #c0392b; --nonc: #2b5fb8;
+  --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #121a16; --surface: #19241f; --sunk: #16201b; --ink: #e3ebe6; --muted: #9eaea6; --line: #2d3c35;
+    --strat: #16263a; --trop: #1b2d40; --ground: #2a3626; --ozone: #2f6f9c; --thin: #1d3348; --sun: #e0b040; --uv: #c79af0; --cfc: #f07b72;
+    --accent: #6cc196; --accent-ink: #0d1a14; --accent-soft: #1d3a2c;
+    --good: #72d09d; --good-bg: #163226; --bad: #f08d81; --bad-bg: #3b201c; --hint: #e6b85e; --hint-bg: #352a13;
+    --enz: #23474f; --enz-line: #63b8c8; --sub: #6cc07c; --sub-end: #b5e8bf; --inh: #f07b72; --comp: #f07b72; --nonc: #7fa8f0;
+    color-scheme: dark;
+  }
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 17px; line-height: 1.6; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+[hidden] { display: none !important; }
+.wrap { max-width: 860px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 20px 56px; display: flex; flex-direction: column; gap: 16px; }
+h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 700; line-height: 1.15; margin: 0; text-wrap: balance; }
+h1 { font-size: clamp(26px, 4vw, 34px); letter-spacing: -.01em; }
+h2 { font-size: clamp(22px, 3vw, 27px); }
+h4 { font-size: 17px; }
+p { margin: 0; }
+.eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 22px; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+@media (max-width: 520px) { .card { padding: 15px; } body { font-size: 16px; } }
+
+/* Section chips */
+.chips { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 2px; scrollbar-width: thin; }
+.chips button { flex: 0 0 auto; font: inherit; font-size: 13px; color: var(--muted); background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px 5px 6px; cursor: pointer; display: flex; gap: 6px; align-items: center; white-space: nowrap; }
+.chips button .n { font-family: var(--font-mono); font-size: 11px; width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center; background: var(--sunk); border: 1px solid var(--line); }
+.chips button.done .n { background: var(--good); color: var(--surface); border-color: var(--good); }
+.chips button[aria-current="step"] { color: var(--accent-ink); background: var(--accent); border-color: var(--accent); }
+.chips button[aria-current="step"] .n { background: var(--accent-ink); color: var(--accent); border-color: var(--accent-ink); }
+.chips button:disabled { opacity: .5; cursor: not-allowed; }
+button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+/* Notes */
+.notes { display: flex; flex-direction: column; gap: 12px; max-width: 70ch; }
+.notes b { font-weight: 700; }
+ul.bonds { margin: 0; padding-left: 22px; display: flex; flex-direction: column; gap: 2px; }
+.two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+@media (max-width: 620px) { .two { grid-template-columns: minmax(0, 1fr); } }
+.tile { background: var(--sunk); border: 1px solid var(--line); border-radius: 8px; padding: 14px; display: flex; flex-direction: column; gap: 8px; }
+.tile.comp h4 { color: var(--comp); } .tile.nonc h4 { color: var(--nonc); }
+.note { font-size: 14px; color: var(--muted); }
+
+/* Figures */
+.fig { margin: 0; display: flex; flex-direction: column; gap: 8px; align-items: stretch; max-width: 100%; }
+.fig svg { width: 100%; max-width: 640px; height: auto; display: block; margin: 0 auto; }
+
+.fig figcaption { font-size: 14px; color: var(--muted); text-align: center; }
+.enz { fill: var(--enz); stroke: var(--enz-line); stroke-width: 2; }
+.sub { fill: var(--sub); }
+.sub-end { fill: var(--sub-end); }
+.inh { fill: var(--inh); }
+.figbg { fill: var(--surface); }
+.panel { fill: var(--sunk); stroke: var(--line); }
+.lbl { fill: var(--ink); font-family: var(--font-body); font-size: 14px; }
+.small-t { font-size: 12px; }
+.inh-t { fill: var(--inh); font-weight: 700; }
+.cap { fill: var(--muted); font-family: var(--font-body); font-size: 14px; }
+.lead { stroke: var(--muted); stroke-width: 1; }
+.bad-mark line { stroke: var(--bad); stroke-width: 3.5; stroke-linecap: round; }
+.good-mark { fill: none; stroke: var(--good); stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; }
+.arrow { stroke: var(--muted); stroke-width: 2; }
+.arrow-head { fill: var(--muted); }
+.cone { fill: var(--good); opacity: .35; stroke: var(--good); stroke-width: 1; }
+.axis { stroke: var(--ink); stroke-width: 1.6; }
+.grid { stroke: var(--line); stroke-width: 1; }
+.dash { stroke: var(--muted); stroke-width: 1.4; stroke-dasharray: 6 5; }
+.guide { fill: none; stroke-width: 1.3; stroke-dasharray: 4 4; }
+.num { fill: var(--muted); font-family: var(--font-mono); font-size: 12px; }
+.axis-t { fill: var(--ink); font-family: var(--font-body); font-size: 14px; }
+.curve .line { fill: none; stroke-width: 3; }
+.curve-t { font-weight: 700; font-size: 14px; }
+.c-normal .line { stroke: var(--ink); } .c-normal .guide { stroke: var(--ink); } .c-normal .curve-t { fill: var(--ink); }
+.c-comp .line { stroke: var(--comp); } .c-comp .guide { stroke: var(--comp); } .c-comp .curve-t { fill: var(--comp); }
+.c-nonc .line { stroke: var(--nonc); } .c-nonc .guide { stroke: var(--nonc); } .c-nonc .curve-t { fill: var(--nonc); }
+#inhib-fig .curve.off { display: none; }
+.toggles { display: flex; gap: 8px; flex-wrap: wrap; }
+.tog { font: inherit; font-size: 14px; color: var(--ink); background: var(--surface); border: 1.5px solid var(--line); border-radius: 999px; padding: 6px 12px; cursor: pointer; }
+.tog.on { border-color: var(--accent); background: var(--accent-soft); font-weight: 700; }
+.tog { display: inline-flex; align-items: center; gap: 8px; }
+.tog .sw { width: 18px; height: 4px; border-radius: 2px; display: inline-block; opacity: .35; }
+.tog.on .sw { opacity: 1; }
+.sw-normal { background: var(--ink); } .sw-comp { background: var(--comp); } .sw-nonc { background: var(--nonc); }
+.tog:disabled { cursor: default; }
+.sat-caps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; font-size: 13px; color: var(--muted); }
+.sat-caps b { color: var(--ink); }
+@media (max-width: 560px) { .sat-caps { grid-template-columns: minmax(0, 1fr); } }
+
+
+.sub { color: var(--muted); margin-top: 4px; }
+.roles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.levels3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+@media (max-width: 620px) { .roles, .levels3 { grid-template-columns: minmax(0, 1fr); } }
+.levels3 .tile { border-top: 4px solid var(--accent); }
+ul.pts { margin: 0; padding-left: 22px; display: flex; flex-direction: column; gap: 6px; }
+.examtip { background: var(--hint-bg); border-radius: 8px; padding: 10px 14px; font-size: 15px; }
+.examtip b { color: var(--hint); }
+ol.tl { list-style: none; margin: 0; padding: 0 0 0 4px; display: flex; flex-direction: column; }
+ol.tl li { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 12px; padding: 8px 0 8px 18px; border-left: 3px solid var(--accent); position: relative; }
+ol.tl li::before { content: ""; position: absolute; left: -8px; top: 14px; width: 13px; height: 13px; border-radius: 50%; background: var(--accent); border: 2px solid var(--surface); }
+ol.tl li b { font-family: var(--font-mono); font-weight: 500; }
+ol.tl li.future { border-left-style: dashed; color: var(--muted); }
+ol.tl li.future::before { background: var(--surface); border-color: var(--accent); }
+.gcards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+@media (max-width: 620px) { .gcards { grid-template-columns: minmax(0, 1fr); } }
+.gcard { background: var(--sunk); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px; }
+.gcard .full { font-size: 13px; color: var(--muted); }
+.gcard dl { margin: 0; display: grid; grid-template-columns: auto auto; gap: 4px 10px; font-size: 14px; }
+.gcard dt { color: var(--muted); } .gcard dd { margin: 0; font-weight: 700; }
+.gcard dd.yes { color: var(--bad); } .gcard dd.no { color: var(--good); }
+.gcard .status { font-size: 14px; border-top: 1px solid var(--line); padding-top: 6px; }
+.tblwrap { overflow-x: auto; }
+table.gt { border-collapse: collapse; width: 100%; font-size: 15px; min-width: 520px; }
+table.gt th, table.gt td { padding: 8px 10px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+table.gt thead th { font-size: 13px; color: var(--muted); }
+table.gt td.yes { color: var(--bad); font-weight: 700; } table.gt td.no { color: var(--good); font-weight: 700; }
+.sky-strat { fill: var(--strat); } .sky-trop { fill: var(--trop); } .ground { fill: var(--ground); }
+.ozone { fill: var(--ozone); } .thin { fill: var(--thin); } .sun { fill: var(--sun); }
+.uv line { stroke: var(--uv); stroke-width: 3; stroke-dasharray: 8 5; }
+.uv-t { fill: var(--uv); font-weight: 700; }
+.cfc circle { fill: var(--cfc); }
+.rise { stroke: var(--cfc); stroke-width: 2; stroke-dasharray: 3 5; }
+.lbl.b { font-weight: 700; }
+.box { fill: var(--sunk); stroke: var(--line); stroke-width: 1.5; }
+.box.bad { fill: var(--bad-bg); stroke: var(--bad); } .box.good { fill: var(--good-bg); stroke: var(--good); }
+.arr { stroke: var(--muted); stroke-width: 2; }
+
+/* Check card */
+.check { border-top: 4px solid var(--accent); }
+.qhead { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; }
+.stage { font-family: var(--font-mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; padding: 4px 10px; border-radius: 6px; background: var(--accent-soft); color: var(--accent); }
+.stage.backup { background: var(--hint-bg); color: var(--hint); }
+.stage.retry { background: var(--accent); color: var(--accent-ink); }
+.trail { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; font-family: var(--font-mono); font-size: 11px; color: var(--muted); }
+.trail b { font-weight: 500; padding: 2px 7px; border-radius: 5px; border: 1px solid var(--line); }
+.trail b.done { background: var(--sunk); border-color: transparent; text-decoration: line-through; }
+.trail b.on { border-color: var(--hint); color: var(--hint); }
+.stem { font-size: 18px; font-weight: 700; max-width: 66ch; }
+.opts { display: flex; flex-direction: column; gap: 8px; }
+.opt { display: grid; grid-template-columns: 32px minmax(0, 1fr) auto; gap: 12px; align-items: center; width: 100%; text-align: left; font: inherit; color: var(--ink); background: var(--surface); border: 1.5px solid var(--line); border-radius: 8px; padding: 10px 12px; cursor: pointer; }
+.opt:hover:not(:disabled) { border-color: var(--accent); background: var(--accent-soft); }
+.opt:disabled { cursor: default; }
+.opt .k { width: 30px; height: 30px; border-radius: 6px; display: grid; place-items: center; font-family: var(--font-mono); background: var(--sunk); border: 1px solid var(--line); }
+.opt .mark { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: .05em; }
+.opt.right { border-color: var(--good); background: var(--good-bg); } .opt.right .k { background: var(--good); color: var(--surface); border-color: var(--good); } .opt.right .mark { color: var(--good); }
+.opt.wrong { border-color: var(--bad); background: var(--bad-bg); } .opt.wrong .k { background: var(--bad); color: var(--surface); border-color: var(--bad); } .opt.wrong .mark { color: var(--bad); }
+.opt.dim { opacity: .55; }
+.log { display: flex; flex-direction: column; gap: 8px; }
+.msg { border-radius: 8px; padding: 11px 14px; }
+.msg h3 { font-family: var(--font-body); font-size: 15px; margin: 0 0 3px; }
+.msg.good { background: var(--good-bg); } .msg.good h3 { color: var(--good); }
+.msg.bad { background: var(--bad-bg); } .msg.bad h3 { color: var(--bad); }
+.msg.hint { background: var(--hint-bg); } .msg.hint h3 { color: var(--hint); }
+.btn { font: inherit; font-weight: 700; border: 0; border-radius: 8px; padding: 11px 20px; cursor: pointer; background: var(--accent); color: var(--accent-ink); }
+.btn.ghost { background: transparent; color: var(--accent); border: 1.5px solid var(--accent); }
+.btn:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+.actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.passed { display: flex; flex-direction: column; gap: 6px; }
+.passed div { display: flex; gap: 10px; align-items: baseline; font-size: 15px; }
+.tag { font-family: var(--font-mono); font-size: 11px; letter-spacing: .05em; text-transform: uppercase; padding: 2px 7px; border-radius: 5px; white-space: nowrap; }
+.tag.first { background: var(--good-bg); color: var(--good); } .tag.help { background: var(--hint-bg); color: var(--hint); } .tag.miss { background: var(--bad-bg); color: var(--bad); }
+.big { font-family: var(--font-display); font-weight: 700; font-size: clamp(40px, 7vw, 56px); line-height: 1; font-variant-numeric: tabular-nums; }
+.big small { font-size: .45em; color: var(--muted); font-weight: 500; }
+.secs { display: flex; flex-direction: column; gap: 8px; }
+.secs .row { display: flex; gap: 10px; align-items: center; justify-content: space-between; flex-wrap: wrap; border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; }
+.linkbtn { font: inherit; font-size: 14px; color: var(--accent); background: none; border: 0; padding: 0; text-decoration: underline; cursor: pointer; }
+ol.keys { margin: 0; padding-left: 22px; display: flex; flex-direction: column; gap: 6px; }
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+@media (max-width: 600px) {
+  .fig svg .lbl, .fig svg .cap, .fig svg .axis-t { font-size: 21px; }
+  .fig svg .curve-t { font-size: 20px; }
+  .fig svg .num { font-size: 17px; }
+  .fig svg .small-t { font-size: 18px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">IGCSE Environmental Management 0680 · Atmosphere</div>
+    <h1>Saving the ozone layer</h1>
+    <p class="sub">Strategies to manage the impacts of ozone depletion</p>
+  </header>
+  <nav class="chips" id="chips" aria-label="Sections"></nav>
+  <main id="main" style="display:flex;flex-direction:column;gap:16px"></main>
+</div>
+<script>
+/* ===== Walk-through content: strategies to manage ozone depletion (IGCSE 0680) ===== */
+const SECTIONS = [
+ {
+  "id": "s1",
+  "title": "Why countries must work together",
+  "teach": "\n<p>The <b>ozone layer</b> in the stratosphere absorbs harmful <b>ultraviolet (UV) radiation</b> from the Sun. More UV reaching the ground means more skin cancer, cataracts and crop damage.</p>\n<p><b>Ozone-depleting substances (ODSs)</b>, such as <b>CFCs</b> from old fridges, air conditioners and aerosol sprays, drift up into the stratosphere. There they release <b>chlorine</b>, which breaks ozone down.</p>\n{{FIG:shield}}\n<p>Gases released in one country spread through the whole atmosphere, so <b>no country can fix the problem on its own</b>. Efforts to recover the ozone layer are an example of how <b>international cooperation</b> can have a positive impact: scientists now expect the ozone layer over most of the world to recover to 1980 levels by around <b>2040</b>, and over Antarctica by around <b>2066</b>.</p>",
+  "checks": [
+   {
+    "id": "c1",
+    "q": "Why does ozone depletion need international agreements, not just action by individual countries?",
+    "o": [
+     "ODSs spread around the whole atmosphere",
+     "Only a few countries have an ozone layer above them",
+     "Each country's ozone layer can be repaired separately",
+     "UV only affects the countries that release ODSs"
+    ],
+    "a": 0,
+    "w": {
+     "1": "The ozone layer surrounds the whole Earth. Every country has it above them.",
+     "2": "The stratosphere is one connected layer. Gases mix around it, so it can't be repaired country by country.",
+     "3": "UV damage happens wherever the ozone layer is thin, which is often far from where the ODSs were released (for example over Antarctica)."
+    },
+    "x": "ODSs mix through the whole atmosphere, so one country cutting its emissions isn't enough if others carry on. Every country has to act together.",
+    "b": [
+     {
+      "q": "What does the ozone layer do?",
+      "o": [
+       "Absorbs harmful UV from the Sun",
+       "Traps heat and warms the Earth's surface",
+       "Produces most of the oxygen we breathe",
+       "Stops acid rain from reaching the ground"
+      ],
+      "a": 0,
+      "x": "Ozone absorbs harmful UV radiation. When it thins, more UV reaches the ground."
+     },
+     {
+      "q": "Which element released from CFCs breaks down ozone?",
+      "o": [
+       "Chlorine",
+       "Carbon",
+       "Fluorine",
+       "Hydrogen"
+      ],
+      "a": 0,
+      "x": "CFC = chlorofluorocarbon. UV in the stratosphere breaks CFCs apart, releasing chlorine, which destroys ozone."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "s2",
+  "title": "The role of UNEP",
+  "teach": "\n<p>The <b>United Nations Environment Programme (UNEP)</b> plays a critical role in protecting the stratospheric ozone layer. It does this in four main ways:</p>\n<div class=\"roles\">\n  <div class=\"tile\"><h4>Raising public awareness</h4><p>Helping people understand the problem and what they can do.</p></div>\n  <div class=\"tile\"><h4>Continued research</h4><p>Into the causes of ozone depletion and its impacts on health and the environment.</p></div>\n  <div class=\"tile\"><h4>Supporting governments and industries</h4><p>Helping them switch away from ODSs.</p></div>\n  <div class=\"tile\"><h4>Creating international agreements</h4><p>Such as the Montreal Protocol.</p></div>\n</div>",
+  "checks": [
+   {
+    "id": "c2",
+    "q": "UNEP funds scientists to measure ozone levels and to study rates of skin cancer. Which of UNEP's roles is this?",
+    "o": [
+     "Raising public awareness",
+     "Continued research",
+     "Supporting governments and industries",
+     "Creating international agreements"
+    ],
+    "a": 1,
+    "fixed": true,
+    "w": {
+     "0": "Awareness is about informing the public. Measuring ozone and studying skin cancer is gathering new evidence.",
+     "2": "Supporting governments and industries means helping them switch to alternatives. This is about finding things out.",
+     "3": "Agreements are deals between countries. This is scientific work."
+    },
+    "x": "Measuring ozone levels and studying health effects is research into the causes and impacts of ozone depletion.",
+    "b": [
+     {
+      "q": "What does 'research' mean in UNEP's work?",
+      "o": [
+       "Collecting evidence about the problem",
+       "Persuading people to buy new products",
+       "Signing agreements between countries",
+       "Banning the sale of aerosol sprays"
+      ],
+      "a": 0,
+      "x": "Research means gathering evidence: measuring, monitoring and studying."
+     },
+     {
+      "q": "A UNEP poster campaign tells people how to dispose of old fridges safely. Which role is that?",
+      "o": [
+       "Raising public awareness",
+       "Continued research",
+       "Creating international agreements",
+       "Supporting industries with new technology"
+      ],
+      "a": 0,
+      "x": "Informing the public is raising awareness. Compare this with the measuring and studying in the main question."
+     }
+    ]
+   },
+   {
+    "id": "c3",
+    "q": "Which of these is NOT one of UNEP's roles in protecting the ozone layer?",
+    "o": [
+     "Raising public awareness",
+     "Supporting governments and industries",
+     "Creating international agreements",
+     "Making CFC replacements itself"
+    ],
+    "a": 3,
+    "w": {
+     "0": "This is one of UNEP's roles: helping people understand the problem.",
+     "1": "This is one of UNEP's roles: helping governments and industries switch away from ODSs.",
+     "2": "This is one of UNEP's roles. The Montreal Protocol was created under its guidance."
+    },
+    "x": "UNEP organises, informs and supports, but it doesn't make chemicals itself. Industries develop and manufacture the alternatives.",
+    "b": [
+     {
+      "q": "What kind of organisation is UNEP?",
+      "o": [
+       "A UN agency that coordinates environmental work",
+       "A chemical company that makes refrigerants for fridges",
+       "A government department in one country",
+       "A charity that plants trees to absorb CFCs"
+      ],
+      "a": 0,
+      "x": "UNEP is part of the United Nations. It coordinates and supports; it doesn't run factories."
+     },
+     {
+      "q": "How many main roles does UNEP have in protecting the ozone layer?",
+      "o": [
+       "4",
+       "2",
+       "6",
+       "10"
+      ],
+      "a": 0,
+      "x": "UNEP has four roles: awareness, research, supporting governments and industries, and creating agreements."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "s3",
+  "title": "The Montreal Protocol",
+  "teach": "\n<p>The <b>Montreal Protocol on Substances that Deplete the Ozone Layer</b> was agreed in <b>1987</b> under the guidance of UNEP. It is a landmark international agreement.</p>\n<ul class=\"pts\">\n  <li>It has been <b>revised and strengthened</b> over time to reflect new scientific and technological advances. For example, the <b>1992 Copenhagen</b> meeting tightened the restrictions further.</li>\n  <li>A small group of countries signed it at first. Now <b>every country in the world</b> has ratified it: it was the first UN treaty to achieve this.</li>\n  <li>It is <b>legally binding</b>: countries must meet its targets.</li>\n  <li>As a result, emissions of ODSs have <b>fallen rapidly</b> since 1987.</li>\n</ul>\n{{FIG:timeline}}\n<p class=\"examtip\"><b>Examiner tip:</b> know the key reasons for the Protocol's success, such as international cooperation and legally binding targets, and how it has helped reverse ozone depletion.</p>",
+  "checks": [
+   {
+    "id": "c4",
+    "q": "Why has the Montreal Protocol been revised several times since 1987, for example at Copenhagen in 1992?",
+    "o": [
+     "To reflect new science and technology",
+     "Because countries kept forgetting the original rules",
+     "To allow more CFCs to be produced again",
+     "Because the ozone layer had already fully recovered"
+    ],
+    "a": 0,
+    "w": {
+     "1": "The revisions weren't reminders. They changed the rules as more was learned.",
+     "2": "The revisions tightened the restrictions, not loosened them.",
+     "3": "The ozone layer is still recovering; full recovery isn't expected until around 2040–2066."
+    },
+    "x": "As scientists learned more about ozone depletion, and as alternatives became available, the Protocol was strengthened: for example, Copenhagen in 1992 tightened the restrictions.",
+    "b": [
+     {
+      "q": "What did the 1992 Copenhagen meeting do to the Montreal Protocol's restrictions?",
+      "o": [
+       "Tightened them",
+       "Removed them",
+       "Delayed them by 20 years",
+       "Applied them to only a few countries"
+      ],
+      "a": 0,
+      "x": "Copenhagen tightened the restrictions and sped up the phase-out."
+     },
+     {
+      "q": "If scientists discover that a chemical damages ozone more than expected, what should happen to an agreement like the Montreal Protocol?",
+      "o": [
+       "Update it to control that chemical more strictly",
+       "Keep it exactly the same, because it was already agreed",
+       "Cancel it, because the science has changed",
+       "Apply it only in the countries that found the problem"
+      ],
+      "a": 0,
+      "x": "Agreements need to change as the science changes. That flexibility is one strength of the Protocol."
+     }
+    ]
+   },
+   {
+    "id": "c5",
+    "q": "Which of these is a key reason for the Montreal Protocol's success?",
+    "o": [
+     "It is legally binding, and every country joined",
+     "It only applied to a small number of rich countries",
+     "It banned all chemicals used in fridges overnight",
+     "It relied on companies choosing voluntarily to stop"
+    ],
+    "a": 0,
+    "w": {
+     "1": "It began with a small group of countries, but its success came from every country joining.",
+     "2": "It used phased reductions over many years, giving industries time to adapt.",
+     "3": "Its targets are legally binding, not voluntary."
+    },
+    "x": "Legally binding targets, universal participation, phased timetables and support for developing countries all helped make it a success.",
+    "b": [
+     {
+      "q": "What does 'legally binding' mean?",
+      "o": [
+       "Countries must meet the targets by law",
+       "Countries can choose whether or not to follow it",
+       "Only scientists working on ozone have to follow it",
+       "It only applies in Canada, where it was signed"
+      ],
+      "a": 0,
+      "x": "Legally binding means it is a requirement, not just a suggestion."
+     },
+     {
+      "q": "How many countries have now ratified the Montreal Protocol?",
+      "o": [
+       "Every country in the world",
+       "Only the 24 original countries",
+       "About half of all countries",
+       "Only developed countries"
+      ],
+      "a": 0,
+      "x": "It was the first UN treaty to be ratified by every country."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "s4",
+  "title": "Phasing out ODSs fairly",
+  "teach": "\n<p>The Montreal Protocol uses <b>phased reductions</b>: ODSs are cut step by step to a timetable, rather than banned overnight.</p>\n<ul class=\"pts\">\n  <li>Gradual reduction schedules have <b>allowed industries to adapt</b>.</li>\n  <li>They give time for <b>alternatives to ODSs to be developed and adopted</b>.</li>\n  <li><b>Developed countries</b> got earlier deadlines: they had phased out CFCs by 1996. <b>Developing countries</b> got a later deadline: 2010.</li>\n  <li>The replacements, <b>HCFCs</b>, are being phased out more slowly: by <b>2030</b> in developed countries, with UNEP aiming to end all HCFC production by <b>2040</b>.</li>\n</ul>\n<div class=\"tile\"><h4>The Multilateral Fund (MLF)</h4><p>Set up in <b>1991</b> to <b>help developing countries</b> meet and keep their Montreal Protocol commitments. It pays for industrial conversion (changing factories over to alternatives), technical assistance, training and <b>capacity building</b> for the future.</p></div>",
+  "checks": [
+   {
+    "id": "c6",
+    "q": "Why were developing countries given later deadlines and money from the Multilateral Fund?",
+    "o": [
+     "They had less money and technology to switch",
+     "Their ozone layer was thicker, so it mattered less",
+     "They had caused most of the world's ozone depletion",
+     "They had refused to sign the Montreal Protocol"
+    ],
+    "a": 0,
+    "w": {
+     "1": "The ozone layer covers everyone. Its thickness has nothing to do with who gets more time.",
+     "2": "Most ODSs were made and used by developed countries, which is partly why they acted first.",
+     "3": "Developing countries did sign. The later deadlines and funding helped them take part."
+    },
+    "x": "Switching to alternatives costs money and needs new technology and training. Later deadlines and MLF funding made it fair and possible for developing countries to take part.",
+    "b": [
+     {
+      "q": "What does the Multilateral Fund pay for?",
+      "o": [
+       "Converting factories, training and technical help",
+       "Free new fridges for every household in the world",
+       "Research into cheaper ways to make more CFCs",
+       "Paying fines for countries that break the rules"
+      ],
+      "a": 0,
+      "x": "Industrial conversion, technical assistance, training and capacity building."
+     },
+     {
+      "q": "Which countries had to phase out CFCs first?",
+      "o": [
+       "Developed countries",
+       "Developing countries",
+       "Only countries near Antarctica",
+       "All countries at the same time"
+      ],
+      "a": 0,
+      "x": "Developed countries phased out CFCs by 1996; developing countries by 2010."
+     }
+    ]
+   },
+   {
+    "id": "c7",
+    "q": "What is the main advantage of phasing out ODSs gradually rather than banning them all at once?",
+    "o": [
+     "Industries get time to develop alternatives",
+     "It lets ODS production keep increasing for years",
+     "It means no country needs to change anything",
+     "It keeps the price of CFCs low for consumers"
+    ],
+    "a": 0,
+    "w": {
+     "1": "Phased reduction means production goes down step by step, not up.",
+     "2": "Every country has to cut its ODSs. It just happens over a set timetable.",
+     "3": "The aim is to stop using CFCs, not to keep them cheap."
+    },
+    "x": "A sudden ban could have left people without fridges, air conditioning or medical inhalers. A timetable gave industries time to develop and switch to alternatives.",
+    "b": [
+     {
+      "q": "What does 'phased reduction' mean?",
+      "o": [
+       "Cutting use step by step to a timetable",
+       "Stopping all use on one agreed day",
+       "Increasing use slowly over a long time",
+       "Swapping one ODS for another, stronger ODS"
+      ],
+      "a": 0,
+      "x": "Phased means in stages. Each stage cuts production and use further."
+     },
+     {
+      "q": "If CFCs had been banned overnight in 1987, what would most likely have happened?",
+      "o": [
+       "Many products would have had no ready replacement",
+       "Ozone would have recovered within a week",
+       "Factories would have switched instantly with no cost",
+       "Nothing would have changed at all"
+      ],
+      "a": 0,
+      "x": "Alternatives take time to develop and produce. That's why a timetable was used."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "s5",
+  "title": "Illegal trade and national governments",
+  "teach": "\n<p>The <b>illegal market</b> for ozone-depleting substances is a significant challenge to ozone protection. Smugglers sell banned ODSs, sometimes labelled as something else.</p>\n<p>To curb the illegal trade and make sure countries comply with international rules, UNEP recommends:</p>\n<ul class=\"pts\"><li><b>persistent monitoring and enforcement</b></li><li><b>collaboration</b> with national authorities, <b>customs agencies</b> and other relevant stakeholders</li></ul>\n<p><b>National governments</b> play a crucial role in putting the agreements made under UNEP into practice, and in helping the switch to <b>ozone-friendly alternatives</b>. They have passed <b>national regulations</b> to reduce the use and production of ODSs such as CFCs.</p>\n<div class=\"tile\"><h4>Example: the USA</h4><p>As part of its commitment to the Montreal Protocol, the US Congress added <b>Title VI</b> to the <b>Clean Air Act</b>, making the <b>Environmental Protection Agency (EPA)</b> responsible for protecting the ozone layer.</p></div>",
+  "checks": [
+   {
+    "id": "c8",
+    "q": "Customs officers find a shipment labelled 'cleaning fluid' that actually contains CFCs. Which UNEP recommendation does catching it depend on?",
+    "o": [
+     "Monitoring and working with customs agencies",
+     "Raising public awareness about wearing sunscreen",
+     "Giving extra money to the Multilateral Fund",
+     "Developing new HFCs to replace all the CFCs"
+    ],
+    "a": 0,
+    "w": {
+     "1": "Awareness campaigns help the public, but catching smuggled shipments needs checks at the border.",
+     "2": "The MLF helps developing countries convert their industries. It doesn't catch smugglers.",
+     "3": "New alternatives reduce demand for CFCs, but they don't stop a shipment that's already being smuggled."
+    },
+    "x": "Persistent monitoring and enforcement, working with customs agencies, is how illegal ODSs are found and stopped.",
+    "b": [
+     {
+      "q": "What is the 'illegal market' for ODSs?",
+      "o": [
+       "Banned ODSs being sold against the rules",
+       "Shops selling ozone-friendly pump sprays",
+       "Countries trading recycled fridges legally",
+       "Scientists sharing their ozone research data"
+      ],
+      "a": 0,
+      "x": "It's the trade in ODSs that breaks the law, often smuggled or mislabelled."
+     },
+     {
+      "q": "Who checks goods coming into a country at its borders?",
+      "o": [
+       "Customs agencies",
+       "UNEP scientists",
+       "Fridge manufacturers",
+       "The Multilateral Fund"
+      ],
+      "a": 0,
+      "x": "Customs agencies inspect imports, which is why UNEP recommends working with them."
+     }
+    ]
+   },
+   {
+    "id": "c9",
+    "q": "What is the role of national governments in protecting the ozone layer?",
+    "o": [
+     "Passing laws to put the agreements into practice",
+     "Writing the Montreal Protocol on their own, without UNEP",
+     "Measuring the ozone layer over other countries",
+     "Producing CFCs for countries that still need them"
+    ],
+    "a": 0,
+    "w": {
+     "1": "The Protocol was agreed between countries under UNEP's guidance. Governments then apply it at home.",
+     "2": "Research and monitoring are mainly UNEP's role, working with scientists.",
+     "3": "Governments are meant to reduce ODSs, not produce them."
+    },
+    "x": "International agreements only work if each government turns them into national laws and enforces them, as the USA did by adding Title VI to its Clean Air Act.",
+    "b": [
+     {
+      "q": "What did the USA add to its Clean Air Act to protect the ozone layer?",
+      "o": [
+       "Title VI, making the EPA responsible",
+       "A complete ban on air conditioning in homes",
+       "A new tax on sunscreen and sunglasses",
+       "Funding for a new UNEP headquarters"
+      ],
+      "a": 0,
+      "x": "Title VI made the Environmental Protection Agency responsible for safeguarding the ozone layer."
+     },
+     {
+      "q": "Why does an international agreement need national laws as well?",
+      "o": [
+       "Each country must enforce the rules at home",
+       "International agreements are only suggestions",
+       "So that UNEP can arrest people in any country",
+       "National laws replace the international agreement"
+      ],
+      "a": 0,
+      "x": "UNEP can't enforce rules inside a country. Each government has to."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "s6",
+  "title": "Replacing CFCs: HCFCs, HFCs and F-gases",
+  "teach": "\n<p>CFCs had to be replaced with other chemicals for fridges, air conditioning, insulation and sprays. But some replacements bring problems of their own.</p>\n{{FIG:gases}}\n<ul class=\"pts\">\n  <li><b>HCFCs</b> (hydrochlorofluorocarbons) still <b>contain chlorine</b>, so they can still deplete the ozone layer, though less than CFCs. That's why they are being phased out too.</li>\n  <li><b>HFCs</b> (hydrofluorocarbons) contain hydrogen, fluorine and carbon but <b>no chlorine</b>. They were introduced as replacements because they <b>don't deplete ozone</b>.</li>\n  <li>But HFCs are <b>potent greenhouse gases</b> with a <b>high global warming potential (GWP)</b>: they trap heat in the atmosphere and contribute to climate change.</li>\n  <li><b>F-gases</b> (fluorinated gases, including HFCs and PFCs) are used in refrigeration, air conditioning and insulation. Many have a high GWP.</li>\n  <li>The <b>Kigali Amendment (2016)</b> to the Montreal Protocol is <b>phasing down</b> HFCs by more than 80% over the next few decades. This could avoid up to about 0.5 °C of global warming by 2100.</li>\n</ul>\n<p class=\"examtip\"><b>Examiner tip:</b> HCFCs contain <b>chlorine</b>, so they can deplete ozone. HFCs do <b>not</b> contain chlorine and do not harm the ozone layer, but they are still potent greenhouse gases.</p>",
+  "checks": [
+   {
+    "id": "c10",
+    "q": "HFCs replaced CFCs because they don't damage the ozone layer. Why are they now being phased down?",
+    "o": [
+     "They are potent greenhouse gases",
+     "They contain chlorine, which destroys ozone",
+     "They are toxic to people when they are breathed in",
+     "They don't work in fridges or air conditioners"
+    ],
+    "a": 0,
+    "w": {
+     "1": "That's HCFCs. HFCs contain hydrogen, fluorine and carbon, but no chlorine.",
+     "2": "Toxicity isn't the problem described here. The issue is their high global warming potential.",
+     "3": "HFCs work well as refrigerants. That's why they were chosen as replacements."
+    },
+    "x": "HFCs don't harm ozone, but they have a high global warming potential. The Kigali Amendment (2016) is phasing them down to limit climate change.",
+    "b": [
+     {
+      "q": "Which elements do HFCs contain?",
+      "o": [
+       "Hydrogen, fluorine and carbon",
+       "Hydrogen, chlorine and carbon",
+       "Chlorine, fluorine and carbon",
+       "Helium, fluorine and carbon"
+      ],
+      "a": 0,
+      "x": "H-F-C: hydrogen, fluorine, carbon. No chlorine, so no ozone damage."
+     },
+     {
+      "q": "What does a high 'global warming potential' (GWP) mean?",
+      "o": [
+       "It traps a lot of heat in the atmosphere",
+       "It destroys a lot of ozone in the stratosphere",
+       "It cools the Earth by reflecting sunlight",
+       "It is easy to recycle at the end of its life"
+      ],
+      "a": 0,
+      "x": "GWP measures how much heat a gas traps compared with carbon dioxide. HFCs trap far more."
+     }
+    ]
+   },
+   {
+    "id": "c11",
+    "q": "Which of these contains chlorine, so it can still deplete the ozone layer?",
+    "o": [
+     "HCFCs",
+     "HFCs",
+     "PFCs",
+     "Carbon dioxide"
+    ],
+    "a": 0,
+    "w": {
+     "1": "HFCs contain hydrogen, fluorine and carbon. No chlorine, so they don't deplete ozone.",
+     "2": "PFCs (perfluorocarbons) contain fluorine and carbon. They are greenhouse gases, but don't deplete ozone.",
+     "3": "Carbon dioxide is a greenhouse gas, but it doesn't contain chlorine or deplete ozone."
+    },
+    "x": "HCFC = hydro-CHLORO-fluorocarbon. The chlorine means it can still break down ozone, though less than CFCs, so HCFCs are being phased out too.",
+    "b": [
+     {
+      "q": "What does the 'C' after 'H' stand for in HCFC?",
+      "o": [
+       "Chlorine",
+       "Carbon dioxide",
+       "Calcium",
+       "Copper"
+      ],
+      "a": 0,
+      "x": "HCFC: hydro-chloro-fluoro-carbon."
+     },
+     {
+      "q": "What do CFCs release that destroys ozone?",
+      "o": [
+       "Chlorine",
+       "Oxygen",
+       "Water vapour",
+       "Nitrogen"
+      ],
+      "a": 0,
+      "x": "Chlorine is what destroys ozone. Any chemical containing chlorine that reaches the stratosphere is a risk."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "s7",
+  "title": "Safe disposal of CFCs",
+  "teach": "\n<p>Many old fridges, freezers and air conditioning units still contain CFCs. <b>Safe disposal</b> of these items is important.</p>\n<ul class=\"pts\">\n  <li>When they are <b>disposed of incorrectly</b>, for example dumped or crushed at a landfill site, <b>leakages occur</b> and the CFCs escape into the atmosphere.</li>\n  <li>CFCs can be disposed of safely at a <b>special disposal facility</b> that breaks them down into non-harmful molecules.</li>\n  <li>However, for some <b>developing countries</b>, the <b>cost</b> of disposal facilities is too high for them to adopt.</li>\n</ul>\n{{FIG:disposal}}",
+  "checks": [
+   {
+    "id": "c12",
+    "q": "Why is it important to take an old fridge to a special disposal facility?",
+    "o": [
+     "The CFCs are broken down instead of leaking",
+     "The fridge can be sold again with its CFCs inside",
+     "It stops the fridge using electricity while it waits",
+     "The facility adds more CFCs so it works better"
+    ],
+    "a": 0,
+    "w": {
+     "1": "Reusing fridges that still contain CFCs keeps the risk of leaks. The facility removes and destroys the CFCs.",
+     "2": "An unplugged fridge uses no electricity anyway. The issue is the CFCs inside it.",
+     "3": "Nobody should be adding CFCs. The facility removes and breaks them down."
+    },
+    "x": "At a special facility, the CFCs are removed and broken down into non-harmful molecules, so they can't escape to the stratosphere.",
+    "b": [
+     {
+      "q": "What happens to the CFCs in a fridge that is dumped or crushed at a landfill site?",
+      "o": [
+       "They can leak out into the atmosphere",
+       "They react with the soil to make ozone",
+       "They stay trapped inside the fridge forever",
+       "They become harmless as soon as it's buried"
+      ],
+      "a": 0,
+      "x": "Damage to the pipes and insulation lets CFCs escape, and they eventually reach the stratosphere."
+     },
+     {
+      "q": "What does a special disposal facility do to CFCs?",
+      "o": [
+       "Breaks them down into harmless molecules",
+       "Stores them in tanks out in the open air",
+       "Sells them on to other countries to reuse",
+       "Pumps them into the sea far from the coast"
+      ],
+      "a": 0,
+      "x": "The CFCs are destroyed, not just moved somewhere else."
+     }
+    ]
+   },
+   {
+    "id": "c13",
+    "q": "Why do some developing countries struggle to dispose of CFCs safely?",
+    "o": [
+     "The facilities cost too much to build",
+     "They have no fridges or air conditioners",
+     "CFCs are not harmful in hot, sunny countries",
+     "The Montreal Protocol bans them from disposing of CFCs"
+    ],
+    "a": 0,
+    "w": {
+     "1": "Fridges and air conditioners are used all over the world, including in developing countries.",
+     "2": "CFCs damage the ozone layer wherever they are released.",
+     "3": "The Protocol encourages safe disposal; it doesn't ban it."
+    },
+    "x": "Special disposal facilities cost a lot to build and run. For some developing countries that cost is too high, which is one limitation of this strategy.",
+    "b": [
+     {
+      "q": "What is the main barrier to safe CFC disposal in some developing countries?",
+      "o": [
+       "Cost",
+       "Lack of interest from scientists",
+       "Too much sunshine",
+       "A shortage of landfill sites"
+      ],
+      "a": 0,
+      "x": "The notes say the cost of disposal facilities is too high for some countries."
+     },
+     {
+      "q": "Which fund was set up to help developing countries meet their Montreal Protocol commitments?",
+      "o": [
+       "The Multilateral Fund",
+       "The Kigali Climate Fund",
+       "The Clean Air Act",
+       "The Copenhagen Fund"
+      ],
+      "a": 0,
+      "x": "The Multilateral Fund (1991) helps developing countries with costs like these."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "s8",
+  "title": "Local action",
+  "teach": "\n<p>Individuals can help too. To reduce ozone depletion, people can:</p>\n<div class=\"roles\">\n  <div class=\"tile\"><h4>Avoid ODSs</h4><p>Avoid products that contain CFCs, HCFCs or nitrous oxide. Use \"ozone-friendly\" products and <b>pump-action</b> cleaning products and sprays, although these are more expensive and less efficient.</p></div>\n  <div class=\"tile\"><h4>Use less transport</h4><p>Walk, cycle or car-share; use public transport; choose electric vehicles.</p></div>\n  <div class=\"tile\"><h4>Use energy efficiently</h4><p>Use rechargeable equipment, electricity from clean sources and energy-saving products; service and maintain electrical goods.</p></div>\n  <div class=\"tile\"><h4>Service fridges and air conditioners</h4><p>Regular maintenance makes them last longer, work more efficiently, cost less to run, and helps <b>find and fix refrigerant leaks</b>.</p></div>\n</div>\n<p>Air conditioners are <b>energy-intensive</b> and widely used in homes, workplaces, vehicles and public buildings. Traditional units used ODSs such as CFCs, so leaks from old units are still a risk.</p>",
+  "checks": [
+   {
+    "id": "c14",
+    "q": "How does regularly servicing an old air conditioner help protect the ozone layer?",
+    "o": [
+     "Leaks are found and fixed before ODSs escape",
+     "It makes the air conditioner release fresh ozone",
+     "It changes the CFCs inside into harmless HFCs",
+     "It stops the unit from using any electricity"
+    ],
+    "a": 0,
+    "w": {
+     "1": "Air conditioners don't produce ozone. The aim is to stop ODSs escaping.",
+     "2": "Servicing doesn't change one chemical into another. It finds and fixes leaks.",
+     "3": "Servicing improves efficiency, but the unit still uses electricity."
+    },
+    "x": "Old units may contain ODSs such as CFCs. Servicing finds and fixes leaks, so the refrigerant stays sealed inside. It also makes the unit more efficient and longer-lasting.",
+    "b": [
+     {
+      "q": "What do traditional (older) air conditioners contain that can harm the ozone layer?",
+      "o": [
+       "ODSs such as CFCs",
+       "Pure oxygen",
+       "Water only",
+       "Carbon dioxide only"
+      ],
+      "a": 0,
+      "x": "Older units used CFCs as the refrigerant."
+     },
+     {
+      "q": "Besides finding leaks, what is another benefit of servicing an air conditioner?",
+      "o": [
+       "It works more efficiently and lasts longer",
+       "It no longer needs any refrigerant inside it",
+       "It can be used as a heater in winter",
+       "It no longer needs any electricity to run"
+      ],
+      "a": 0,
+      "x": "Servicing prolongs its life, increases efficiency and lowers running costs."
+     }
+    ]
+   },
+   {
+    "id": "c15",
+    "q": "Which choice directly avoids releasing ozone-depleting substances at home?",
+    "o": [
+     "Using a pump-action spray instead of an aerosol",
+     "Leaving the lights on in rooms nobody is using",
+     "Buying a second air conditioner for the house",
+     "Keeping an old fridge running even though it leaks"
+    ],
+    "a": 0,
+    "w": {
+     "1": "That wastes energy, and it doesn't avoid ODSs.",
+     "2": "More air conditioning means more energy use, and more equipment that could leak.",
+     "3": "A leaking old fridge may be releasing CFCs. It should be repaired or disposed of safely."
+    },
+    "x": "Pump-action sprays don't need a propellant gas, so no ODSs are released. A limitation is that they can be more expensive and less efficient.",
+    "b": [
+     {
+      "q": "What is a limitation of pump-action sprays?",
+      "o": [
+       "They can cost more and work less well",
+       "They release large amounts of CFCs",
+       "They destroy ozone faster than aerosols do",
+       "They are banned by the Montreal Protocol"
+      ],
+      "a": 0,
+      "x": "The notes say they are more expensive and less efficient than CFC sprays, which may put some people off."
+     },
+     {
+      "q": "Which of these gases should people avoid in products, as it depletes ozone?",
+      "o": [
+       "Nitrous oxide",
+       "Oxygen",
+       "Nitrogen gas",
+       "Carbon dioxide"
+      ],
+      "a": 0,
+      "x": "The notes list CFCs, HCFCs and nitrous oxide as substances to avoid."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "s9",
+  "title": "Putting it together",
+  "teach": "\n<p>Strategies to manage ozone depletion work at three levels, and each depends on the others.</p>\n{{FIG:levels}}\n<p>In an exam, you may be asked to <b>evaluate</b> a strategy. That means giving its strengths <b>and</b> its limitations. For example, safe disposal facilities destroy CFCs (a strength), but some developing countries can't afford them (a limitation).</p>",
+  "checks": [
+   {
+    "id": "c16",
+    "q": "Which statement best explains why the Montreal Protocol is seen as a model for international cooperation?",
+    "o": [
+     "Every country made binding cuts, and ODSs fell sharply",
+     "A few countries banned CFCs, and the others carried on as normal",
+     "It solved ozone depletion completely within a single year",
+     "It replaced all ODSs with gases that have no impact at all"
+    ],
+    "a": 0,
+    "w": {
+     "1": "Its success came from every country taking part, not just a few.",
+     "2": "Recovery takes decades; the ozone layer isn't expected to recover fully until around 2040–2066.",
+     "3": "Some replacements, such as HFCs, are potent greenhouse gases. That's why the Kigali Amendment was needed."
+    },
+    "x": "Universal, legally binding agreement, backed by funding and phased timetables, led to a sharp fall in ODS emissions and a recovering ozone layer.",
+    "b": [
+     {
+      "q": "When is the ozone hole over Antarctica expected to recover?",
+      "o": [
+       "Around 2066",
+       "It already has, in 1990",
+       "Never",
+       "Around 2030"
+      ],
+      "a": 0,
+      "x": "Recovery is slow because ODSs last a long time in the atmosphere."
+     },
+     {
+      "q": "Why do some people say the switch from CFCs was not a complete success?",
+      "o": [
+       "Some replacements, like HFCs, warm the climate",
+       "CFCs are still used in almost every new fridge",
+       "The ozone layer is getting thinner every year",
+       "Most countries refused to sign the Montreal Protocol"
+      ],
+      "a": 0,
+      "x": "Solving one problem created another, which the Kigali Amendment is now tackling."
+     }
+    ]
+   },
+   {
+    "id": "c17",
+    "q": "A student says: 'Safe disposal facilities are the best way to stop CFCs reaching the atmosphere.' Which is a valid limitation of this strategy?",
+    "o": [
+     "They cost too much for some developing countries",
+     "They release even more CFCs than landfill sites do",
+     "They can only break down HFCs, not CFCs",
+     "They make the remaining fridges use more electricity"
+    ],
+    "a": 0,
+    "w": {
+     "1": "Special facilities break CFCs down into harmless molecules. Landfill is where leaks happen.",
+     "2": "These facilities are designed to break down CFCs.",
+     "3": "Disposal happens at the end of a fridge's life, so it doesn't affect its electricity use."
+    },
+    "x": "A good evaluation names a real limitation: the cost of disposal facilities is too high for some developing countries.",
+    "b": [
+     {
+      "q": "What does 'evaluate' mean in an exam question?",
+      "o": [
+       "Give strengths and limitations, then a judgement",
+       "List as many facts about the topic as possible",
+       "Describe only the advantages of the strategy",
+       "Explain what the question means in your own words"
+      ],
+      "a": 0,
+      "x": "Evaluating means weighing up both sides."
+     },
+     {
+      "q": "Which of these is a strength of safe disposal facilities?",
+      "o": [
+       "They break CFCs down into harmless molecules",
+       "They are cheap enough for every country to build",
+       "They stop people from buying any new fridges",
+       "They produce ozone to repair the layer"
+      ],
+      "a": 0,
+      "x": "Destroying CFCs safely is the strength. Cost is the limitation."
+     }
+    ]
+   }
+  ]
+ }
+];
+const SUMMARY = [
+ "ODSs spread through the whole atmosphere, so countries must cooperate to protect the ozone layer.",
+ "UNEP raises awareness, funds research, supports governments and industries, and creates international agreements.",
+ "The Montreal Protocol (1987) is legally binding, has been strengthened over time (Copenhagen 1992), and every country has ratified it.",
+ "Phased reductions gave industries time to adapt. Developing countries got later deadlines and help from the Multilateral Fund (1991).",
+ "Illegal trade is tackled by monitoring, enforcement and work with customs agencies. National governments turn agreements into laws (e.g. US Clean Air Act Title VI).",
+ "HCFCs contain chlorine and still deplete ozone. HFCs don't, but they are potent greenhouse gases, so the Kigali Amendment (2016) is phasing them down.",
+ "Old fridges and air conditioners must go to special facilities that break CFCs down. These are too costly for some developing countries.",
+ "Individuals can avoid ODS products, use pump sprays, travel and use energy efficiently, and service fridges and air conditioners to fix leaks."
+];
+
+/* ===== Diagrams ===== */
+const F = {};
+
+F.shield = () => `<figure class="fig"><svg viewBox="0 0 600 350" role="img" aria-label="Diagram of the atmosphere. Most of the Sun's UV is absorbed by the ozone layer in the stratosphere, but where the layer is thinned more UV reaches the ground. CFCs from fridges, air conditioners and aerosols rise into the stratosphere, where they release chlorine.">
+  <rect class="sky-strat" x="0" y="0" width="600" height="170"/>
+  <rect class="sky-trop" x="0" y="170" width="600" height="140"/>
+  <rect class="ground" x="0" y="310" width="600" height="40"/>
+  <rect class="ozone" x="0" y="70" width="600" height="36"/>
+  <rect class="thin" x="470" y="70" width="110" height="36"/>
+  <text class="lbl b" x="16" y="94">ozone layer</text>
+  <text class="lbl" x="506" y="94" text-anchor="middle">thinned</text>
+  <text class="cap" x="16" y="156">stratosphere</text>
+  <text class="cap" x="16" y="206">troposphere</text>
+  <circle class="sun" cx="560" cy="32" r="26"/>
+  <g class="uv"><line x1="536" y1="38" x2="360" y2="68"/><line x1="536" y1="48" x2="310" y2="68"/><line x1="560" y1="58" x2="524" y2="306"/></g>
+  <text class="lbl uv-t" x="300" y="46" text-anchor="end">UV absorbed</text>
+  <text class="lbl uv-t" x="510" y="236" text-anchor="end">more UV reaches</text>
+  <text class="lbl uv-t" x="510" y="258" text-anchor="end">the ground</text>
+  <g class="cfc"><circle cx="100" cy="290" r="8"/><circle cx="135" cy="240" r="8"/><circle cx="170" cy="190" r="8"/><circle cx="205" cy="140" r="8"/></g>
+  <line class="rise" x1="88" y1="306" x2="214" y2="124" marker-end="url(#oz-ah)"/>
+  <text class="lbl b" x="228" y="140">CFCs release chlorine</text>
+  <text class="lbl" x="16" y="336">fridges, air conditioners, aerosols</text>
+  <defs><marker id="oz-ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow-head" d="M 0 0 L 10 5 L 0 10 z"/></marker></defs>
+</svg><figcaption>CFCs rise into the stratosphere, release chlorine and thin the ozone layer, so more UV reaches the ground.</figcaption></figure>`;
+
+F.timeline = () => {
+  const ev = [
+    ["1987", "Montreal Protocol agreed under UNEP"],
+    ["1991", "Multilateral Fund set up to help developing countries"],
+    ["1992", "Copenhagen meeting tightens the restrictions"],
+    ["1996", "CFCs phased out in developed countries"],
+    ["2010", "CFCs phased out in developing countries"],
+    ["2016", "Kigali Amendment: HFCs to be phased down"],
+    ["2030", "HCFCs phased out in developed countries"],
+    ["2040", "Target date to end all HCFC production; ozone over most of the world expected to recover"],
+    ["2066", "Ozone hole over Antarctica expected to recover"]
+  ];
+  return `<figure class="fig"><ol class="tl">${ev.map(([y, t], i) => `<li class="${+y > 2026 ? "future" : ""}"><b>${y}</b><span>${t}</span></li>`).join("")}</ol><figcaption>Key dates. Faded dates are targets or predictions.</figcaption></figure>`;
+};
+
+F.gases = () => {
+  const rows = [
+    ["CFCs", "chlorofluorocarbons", [["Contains chlorine?", "Yes", "yes"], ["Depletes ozone?", "Yes, strongly", "yes"], ["Potent greenhouse gas?", "Yes", "yes"]], "Phased out (1996 / 2010)"],
+    ["HCFCs", "hydrochlorofluorocarbons", [["Contains chlorine?", "Yes", "yes"], ["Depletes ozone?", "Yes, but less than CFCs", "yes"], ["Potent greenhouse gas?", "Yes", "yes"]], "Being phased out (2030 / 2040)"],
+    ["HFCs", "hydrofluorocarbons", [["Contains chlorine?", "No", "no"], ["Depletes ozone?", "No", "no"], ["Potent greenhouse gas?", "Yes, high GWP", "yes"]], "Being phased down (Kigali, 2016)"]
+  ];
+  return `<figure class="fig"><div class="gcards">${rows.map(([n, full, facts, status]) => `<div class="gcard"><h4>${n}</h4><p class="full">${full}</p><dl>${facts.map(([k, v, c]) => `<dt>${k}</dt><dd class="${c}">${v}</dd>`).join("")}</dl><p class="status">${status}</p></div>`).join("")}</div><figcaption>Removing chlorine solved the ozone problem but not the climate problem.</figcaption></figure>`;
+};
+
+F.disposal = () => `<figure class="fig"><svg viewBox="0 0 600 260" role="img" aria-label="Two routes for an old fridge. Dumped at landfill: CFCs leak and rise to the stratosphere. Taken to a special facility: CFCs are broken down into harmless molecules.">
+  <rect class="box" x="230" y="10" width="140" height="56" rx="8"/><text class="lbl b" x="300" y="44" text-anchor="middle">Old fridge</text>
+  <line class="arr" x1="270" y1="66" x2="130" y2="118" marker-end="url(#oz-ah2)"/>
+  <line class="arr" x1="330" y1="66" x2="470" y2="118" marker-end="url(#oz-ah2)"/>
+  <rect class="box bad" x="20" y="120" width="220" height="56" rx="8"/><text class="lbl b" x="130" y="154" text-anchor="middle">Dumped or crushed</text>
+  <rect class="box good" x="360" y="120" width="220" height="56" rx="8"/><text class="lbl b" x="470" y="154" text-anchor="middle">Special facility</text>
+  <text class="cap" x="130" y="206" text-anchor="middle">CFCs leak out and</text><text class="cap" x="130" y="228" text-anchor="middle">rise to the stratosphere</text>
+  <text class="cap" x="470" y="206" text-anchor="middle">CFCs broken down into</text><text class="cap" x="470" y="228" text-anchor="middle">non-harmful molecules</text>
+  <defs><marker id="oz-ah2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow-head" d="M 0 0 L 10 5 L 0 10 z"/></marker></defs>
+</svg><figcaption>Safe disposal stops the CFCs in old equipment from escaping.</figcaption></figure>`;
+
+F.levels = () => `<figure class="fig"><div class="levels3">
+  <div class="tile lv-i"><h4>International</h4><p>UNEP and the Montreal Protocol set binding targets for every country, with the Multilateral Fund helping developing countries.</p></div>
+  <div class="tile lv-n"><h4>National</h4><p>Governments pass laws, enforce them, work with customs to stop illegal trade, and support safe disposal.</p></div>
+  <div class="tile lv-l"><h4>Local</h4><p>Individuals avoid ODS products, use energy and transport wisely, and service and safely dispose of fridges and air conditioners.</p></div>
+</div><figcaption>International agreements only work if governments enforce them and people act on them.</figcaption></figure>`;
+
+/* ===== Walk-through engine ===== */
+const KEY = "em0680-ozone-strategies-walkthrough-v1";
+const $ = (s, el = document) => el.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const LET = "ABCD";
+const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const reduceMotion = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+const CHECKS = SECTIONS.flatMap(s => s.checks);
+
+let P = { sec: 0, res: {} };           // saved progress
+try { const raw = localStorage.getItem(KEY); if (raw) P = Object.assign(P, JSON.parse(raw)); } catch (e) {}
+const save = () => { try { localStorage.setItem(KEY, JSON.stringify(P)); } catch (e) {} };
+
+/* Balanced answer positions: each letter is correct equally often, never 3 times running. */
+const bags = { main: [], back: [] }, hist = { main: [], back: [] };
+function deal(name, n, allowed) {
+  const bag = bags[name], h = hist[name];
+  const ok = t => t < n && (!allowed || allowed.includes(t)) && !(h.length >= 2 && h[h.length - 1] === t && h[h.length - 2] === t);
+  let k = -1;
+  for (let tries = 0; tries < 3 && k < 0; tries++) { for (let j = bag.length - 1; j >= 0; j--) if (ok(bag[j])) { k = j; break; } if (k < 0) bag.unshift(...shuffle([0, 1, 2, 3])); }
+  const t = k >= 0 ? bag.splice(k, 1)[0] : (allowed ? allowed[0] : 0); h.push(t); return t;
+}
+function orderFor(n, correct, t, fixed) {
+  const idx = [...Array(n).keys()];
+  if (fixed) { const desc = idx.slice().reverse(); if (n - 1 - correct === t) return desc; if (correct === t) return idx; return Math.random() < .5 ? idx : desc; }
+  const rest = shuffle(idx.filter(i => i !== correct)); rest.splice(t, 0, correct); return rest;
+}
+function order(q, bag) { return orderFor(q.o.length, q.a, deal(bag, q.o.length, q.fixed ? [q.a, q.o.length - 1 - q.a] : null), q.fixed); }
+
+/* Live state of the current check */
+let R = null;
+const sectionDone = i => SECTIONS[i].checks.every(c => P.res[c.id]);
+const unlocked = () => { let i = 0; while (i < SECTIONS.length && sectionDone(i)) i++; return i; }; // first unfinished section
+
+function renderChips() {
+  const u = unlocked();
+  $("#chips").innerHTML = SECTIONS.map((s, i) => `<button type="button" data-i="${i}" class="${sectionDone(i) ? "done" : ""}" ${P.sec === i ? 'aria-current="step"' : ""} ${i > u ? "disabled title=\"Finish the earlier sections first\"" : ""}><span class="n">${sectionDone(i) ? "✓" : i + 1}</span>${esc(s.title)}</button>`).join("")
+    + `<button type="button" data-i="end" ${P.sec === "end" ? 'aria-current="step"' : ""} ${u < SECTIONS.length ? "disabled" : ""}><span class="n">★</span>Summary</button>`;
+  $("#chips").querySelectorAll("button").forEach(b => b.addEventListener("click", () => goSection(b.dataset.i === "end" ? "end" : +b.dataset.i)));
+  const cur = $("#chips").querySelector('[aria-current="step"]'); if (cur && cur.scrollIntoView) cur.scrollIntoView({ block: "nearest", inline: "nearest" });
+}
+
+function goSection(i) { P.sec = i; save(); R = null; render(); window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" }); }
+
+function fillFigs(html) { return html.replace(/\{\{FIG:(\w+)\}\}/g, (m, k) => F[k] ? F[k]() : ""); }
+
+function render() {
+  renderChips();
+  if (P.sec === "end") return renderEnd();
+  if (P.sec > unlocked()) P.sec = unlocked();
+  const s = SECTIONS[P.sec];
+  const done = s.checks.filter(c => P.res[c.id]);
+  const next = s.checks.find(c => !P.res[c.id]);
+  $("#main").innerHTML = `
+    <section class="card"><div class="eyebrow">Section ${P.sec + 1} of ${SECTIONS.length}</div><h2>${esc(s.title)}</h2><div class="notes">${fillFigs(s.teach)}</div></section>
+    <section class="card check" id="checkcard">
+      ${done.length ? `<div class="passed">${done.map(c => `<div><span class="tag ${P.res[c.id]}">${P.res[c.id] === "first" ? "First try" : P.res[c.id] === "help" ? "After help" : "Revisit"}</span><span>${esc(c.q)}</span></div>`).join("")}</div>` : ""}
+      <div id="qzone"></div>
+    </section>`;
+  wireFig();
+  if (next) startCheck(next);
+  else finishSection();
+}
+
+function wireFig() {
+  const fig = $("#inhib-fig"); if (!fig) return;
+  const show = { normal: true, comp: false, nonc: false };
+  const apply = () => { fig.querySelectorAll("[data-curve]").forEach(g => g.classList.toggle("off", !show[g.dataset.curve])); fig.querySelectorAll(".tog").forEach(b => { b.classList.toggle("on", show[b.dataset.show]); b.setAttribute("aria-pressed", show[b.dataset.show]); }); };
+  fig.querySelectorAll(".tog[data-show]").forEach(b => b.addEventListener("click", () => { if (b.dataset.show !== "normal") { show[b.dataset.show] = !show[b.dataset.show]; apply(); } }));
+  apply();
+}
+
+function startCheck(c) {
+  R = { c, phase: "main", bi: 0, first: null, order: order(c, "main"), bOrder: null };
+  drawQ(); clearLog();
+}
+
+function curQ() { return R.phase === "back" ? R.c.b[R.bi] : R.c; }
+function curOrder() { return R.phase === "back" ? R.bOrder : R.order; }
+
+function drawQ() {
+  const c = R.c, s = SECTIONS[P.sec], q = curQ(), ord = curOrder();
+  const idx = s.checks.indexOf(c) + 1;
+  let label, cls = "";
+  if (R.phase === "main") label = `Check ${idx} of ${s.checks.length}`;
+  else if (R.phase === "back") { label = `Back-up question ${R.bi + 1} of ${c.b.length}`; cls = "backup"; }
+  else { label = `Second try · Check ${idx}`; cls = "retry"; }
+  const trail = R.phase === "main" ? "" : `<div class="trail"><b class="done">Check</b>${c.b.map((_, k) => `<i>→</i><b class="${R.phase === "back" && R.bi === k ? "on" : (R.phase === "retry" || R.bi > k ? "done" : "")}">Back-up ${k + 1}</b>`).join("")}<i>→</i><b class="${R.phase === "retry" ? "on" : ""}">Second try</b></div>`;
+  $("#qzone").innerHTML = `
+    <div class="qhead"><span class="stage ${cls}">${label}</span></div>${trail}
+    ${q.fig ? F[q.fig]() : ""}
+    <p class="stem">${esc(q.q)}</p>
+    <div class="opts" id="opts">${ord.map((oi, pos) => `<button type="button" class="opt" data-oi="${oi}" id="opt-${pos}"><span class="k">${LET[pos]}</span><span>${esc(q.o[oi])}</span><span class="mark"></span></button>`).join("")}</div>
+    <div class="log" id="log" aria-live="polite"></div>
+    <div class="actions" id="actions"></div>`;
+  $("#opts").querySelectorAll(".opt").forEach(b => b.addEventListener("click", () => choose(+b.dataset.oi)));
+}
+function clearLog() { const l = $("#log"); if (l) l.innerHTML = ""; }
+function letter(oi) { return LET[curOrder().indexOf(oi)]; }
+function lock(chosen, correct, reveal) {
+  $("#opts").querySelectorAll(".opt").forEach(b => {
+    const oi = +b.dataset.oi; b.disabled = true;
+    if (oi === chosen && chosen === correct) { b.classList.add("right"); b.querySelector(".mark").textContent = "Correct"; }
+    else if (oi === chosen) { b.classList.add("wrong"); b.querySelector(".mark").textContent = "Your answer"; }
+    else if (oi === correct && reveal) { b.classList.add("right"); b.querySelector(".mark").textContent = "Answer"; }
+    else b.classList.add("dim");
+  });
+}
+function msg(kind, title, text) {
+  const d = document.createElement("div"); d.className = "msg " + kind;
+  d.innerHTML = (title ? `<h3>${esc(title)}</h3>` : "") + `<p>${esc(text)}</p>`;
+  $("#log").appendChild(d);
+}
+function actions(list) {
+  const a = $("#actions"); a.innerHTML = "";
+  list.forEach((it, k) => { const b = document.createElement("button"); b.type = "button"; b.className = "btn" + (it.ghost ? " ghost" : ""); b.textContent = it.label; b.addEventListener("click", it.go); a.appendChild(b); if (k === 0) setTimeout(() => { b.focus({ preventScroll: true }); b.scrollIntoView({ block: "nearest", behavior: reduceMotion ? "auto" : "smooth" }); }, 0); });
+}
+
+function choose(oi) {
+  const c = R.c, q = curQ();
+  if (R.phase === "back") {
+    const ok = oi === q.a; lock(oi, q.a, true);
+    msg(ok ? "good" : "bad", ok ? "Correct" : `The answer is ${letter(q.a)}`, q.x);
+    const last = R.bi === c.b.length - 1;
+    actions([{ label: last ? "Try the check question again" : "Next back-up question", go: () => {
+      if (last) { R.phase = "retry"; const was = R.order.indexOf(c.a); if (c.fixed) { const f = R.order.slice().reverse(); if (f.indexOf(c.a) !== was) R.order = f; } else { const t = shuffle([0, 1, 2, 3].filter(p => p !== was))[0]; R.order = orderFor(4, c.a, t, false); } drawQ(); msg("hint", "Second try", "The options are in a new order, so read them carefully."); }
+      else { R.bi++; R.bOrder = order(c.b[R.bi], "back"); drawQ(); }
+      focusFirst();
+    } }]);
+    return;
+  }
+  const ok = oi === c.a;
+  if (R.phase === "main") {
+    if (ok) { lock(oi, c.a, false); msg("good", "Correct", c.x); record("first"); }
+    else {
+      lock(oi, c.a, false); R.first = oi;
+      msg("bad", `Not quite: ${letter(oi)} isn't right`, c.w[oi] || "That isn't the right answer.");
+      msg("hint", "Let's check the basics", `Answer ${c.b.length} short back-up questions, then try this one again. Re-read the notes above if you need to.`);
+      actions([{ label: "Start the back-up questions", go: () => { R.phase = "back"; R.bi = 0; R.bOrder = order(c.b[0], "back"); drawQ(); focusFirst(); } }]);
+    }
+    return;
+  }
+  lock(oi, c.a, true);
+  if (ok) { msg("good", "Got it on the second try", c.x); record("help"); }
+  else { msg("bad", `Not this time. The answer is ${letter(c.a)}`, (c.w[oi] ? c.w[oi] + " " : "") + c.x); record("miss"); }
+}
+function focusFirst() { const b = $("#opt-0"); if (b) { b.focus({ preventScroll: true }); $("#qzone").scrollIntoView({ block: "start", behavior: reduceMotion ? "auto" : "smooth" }); } }
+
+function record(result) {
+  P.res[R.c.id] = result; save(); renderChips();
+  const s = SECTIONS[P.sec], next = s.checks.find(c => !P.res[c.id]);
+  if (next) actions([{ label: "Next check question", go: () => { render(); setTimeout(() => $("#checkcard").scrollIntoView({ block: "start", behavior: reduceMotion ? "auto" : "smooth" }), 0); } }]);
+  else actions(sectionNav());
+}
+function sectionNav() {
+  const last = P.sec === SECTIONS.length - 1;
+  return [{ label: last ? "See your summary" : `Next section: ${SECTIONS[P.sec + 1].title}`, go: () => goSection(last ? "end" : P.sec + 1) }];
+}
+function finishSection() {
+  const s = SECTIONS[P.sec];
+  $("#qzone").innerHTML = `<p>You've finished this section's checks.</p><div class="actions" id="actions"></div>`;
+  const a = sectionNav().concat([{ label: "Redo this section's questions", ghost: true, go: () => { s.checks.forEach(c => delete P.res[c.id]); save(); render(); } }]);
+  const box = $("#actions");
+  a.forEach(it => { const b = document.createElement("button"); b.type = "button"; b.className = "btn" + (it.ghost ? " ghost" : ""); b.textContent = it.label; b.addEventListener("click", it.go); box.appendChild(b); });
+}
+
+function renderEnd() {
+  const n = CHECKS.length, c = { first: 0, help: 0, miss: 0 };
+  CHECKS.forEach(k => { if (P.res[k.id]) c[P.res[k.id]]++; });
+  const pts = c.first + c.help * 0.5;
+  const fmt = v => (v % 1 ? Math.floor(v) + "½" : String(v));
+  $("#main").innerHTML = `
+    <section class="card"><div class="eyebrow">Summary</div>
+      <div class="big">${fmt(pts)}<small> / ${n} checks</small></div>
+      <p>${c.first} right first time · ${c.help} right after the back-up questions · ${c.miss} to revisit</p>
+      <div class="secs">${SECTIONS.map((s, i) => { const r = s.checks.map(k => P.res[k.id]); const worst = r.includes("miss") ? "miss" : r.includes("help") ? "help" : "first";
+        return `<div class="row"><span><span class="tag ${worst}">${worst === "first" ? "Secure" : worst === "help" ? "Getting there" : "Revisit"}</span> ${esc(s.title)}</span><button type="button" class="linkbtn" data-go="${i}">Go to section</button></div>`; }).join("")}</div>
+    </section>
+    <section class="card"><h2>Key points</h2><ol class="keys">${SUMMARY.map(t => `<li>${esc(t)}</li>`).join("")}</ol>
+      <div class="actions"><button type="button" class="btn ghost" id="restart">Start again from the beginning</button><span id="confirm" class="note"></span></div></section>`;
+  $("#main").querySelectorAll("[data-go]").forEach(b => b.addEventListener("click", () => goSection(+b.dataset.go)));
+  let armed = false;
+  $("#restart").addEventListener("click", () => {
+    if (!armed) { armed = true; $("#confirm").textContent = "This clears your answers. Click again to confirm."; setTimeout(() => { armed = false; const el = $("#confirm"); if (el) el.textContent = ""; }, 5000); return; }
+    P = { sec: 0, res: {} }; save(); goSection(0);
+  });
+}
+
+document.addEventListener("keydown", e => {
+  if (e.metaKey || e.ctrlKey || e.altKey || !R) return;
+  const i = "ABCD".indexOf(e.key.toUpperCase()); const j = i >= 0 ? i : "1234".indexOf(e.key);
+  if (j >= 0 && e.key.length === 1) { const b = $("#opt-" + j); if (b && !b.disabled) { e.preventDefault(); b.click(); } }
+});
+
+render();
+
+</script>
+</body>
+</html>
